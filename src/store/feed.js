@@ -1,5 +1,5 @@
 import axios from 'axios'
-import router from '../router'
+//import router from '../router'
 
 const feed = {
     namespaced: true,
@@ -24,7 +24,7 @@ const feed = {
 
     actions:{
         async getAllPosts(context){
-            const url = "";
+            const url = "https://livrevisage-506a7-default-rtdb.europe-west1.firebasedatabase.app/feed.json";
 
             const firebaseResponse = await axios.get(url);
 
@@ -33,3 +33,5 @@ const feed = {
     },
 
 }
+
+export default feed;
