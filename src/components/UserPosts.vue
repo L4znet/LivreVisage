@@ -1,6 +1,6 @@
 <template>
   <main class="container">
-    <Post v-for="(post, index) in $options.filters.getFeedPost(author_id, post.author_id)" :key="index" :content="post.content" :author_name="post.author_name" :author_id="post.author_id"></Post>
+    <Post v-for="(post, index) in getFeedPost" :key="index" :content="post.content" :author_name="post.author_name" :author_id="post.author_id"></Post>
     {{id}}
   </main>
 </template>
