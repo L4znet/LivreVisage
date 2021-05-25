@@ -1,32 +1,34 @@
 <template>
   <main class="container">
-    <!-- <h1>Votre feed</h1>
-    <div class="mb-3">
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Exprimez-vous"></textarea>
-    </div>
-    <Post v-for="(post, index) in getFeedPost" :key="index" :content="post.content" :author="post.author_name"></Post> -->
+    <Post v-for="(post, index) in getFeedPost" :key="index" :content="post.content" :author_name="post.author_name" :author_id="post.author_id"></Post>
+    {{id}}
   </main>
 </template>
 
 <script>
-// import {mapActions, mapGetters } from 'vuex'
+import {mapActions, mapGetters } from 'vuex'
 
-// import Post from '../components/Post.vue'
+import Post from '../components/Post.vue'
 
 export default {
-  // components:{
-  // Post
-  // },
+   data(){
+      return {
+        id: this.$route.params.id
+      }
+  },
+  components:{
+  Post
+  },
 
-  // mounted() {
-  //   this.getAllPosts()
-  // },
-  // computed:{
-  //   ...mapGetters('feed', ['getFeedPost']),
-  // },
+  mounted() {
+    this.getAllPosts()
+  },
+  computed:{
+    ...mapGetters('feed', ['getFeedPost']),
+  },
 
-  // methods:{
-  //   ...mapActions('feed', ['getAllPosts']),
-  // }
+  methods:{
+    ...mapActions('feed', ['getAllPosts']),
+  }
 }
 </script>
