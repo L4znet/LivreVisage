@@ -24,7 +24,7 @@ const feed = {
 
     actions:{
         async getAllPosts(context){
-            const url = "https://livrevisage-506a7-default-rtdb.europe-west1.firebasedatabase.app/feed.json";
+            const url = "https://livrevisage-c44bb-default-rtdb.europe-west1.firebasedatabase.app/feed.json";
 
             const firebaseResponse = await axios.get(url);
 
