@@ -29,7 +29,7 @@ const feed = {
             const firebaseResponse = await axios.get(url);
 
             context.commit('UPDATE_FEED', firebaseResponse.data);
-        }
+        },
     },
 
 }

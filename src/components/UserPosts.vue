@@ -1,14 +1,13 @@
 <template>
   <main class="container">
-    <Post v-for="(post, index) in getFeedPost" :key="index" :content="post.content" :author_name="post.author_name" :author_id="post.author_id"></Post>
-    {{id}}
+    <FilteredPost v-for="(post, index) in getFeedPost" :key="index" :content="post.content" :author_name="post.author_name" :author_id="post.author_id" :selected_id="id"></FilteredPost>
   </main>
 </template>
 
 <script>
 import {mapActions, mapGetters } from 'vuex'
 
-import Post from '../components/Post.vue'
+import FilteredPost from '../components/FilteredPost.vue'
 
 export default {
    data(){
@@ -17,18 +16,18 @@ export default {
       }
   },
   components:{
-  Post
+    FilteredPost
   },
 
   mounted() {
-    this.getAllPosts()
+    this.getUserPosts(this.id);
   },
   computed:{
     ...mapGetters('feed', ['getFeedPost']),
   },
 
   methods:{
-    ...mapActions('feed', ['getAllPosts']),
+    ...mapActions('feed', ['getUserPosts']),
   }
 }
 </script>
