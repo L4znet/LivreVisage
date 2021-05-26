@@ -24,19 +24,11 @@ const feed = {
 
     actions:{
         async getAllPosts(context){
-            const url = "https://livrevisage-506a7-default-rtdb.europe-west1.firebasedatabase.app/feed.json";
+            const url = "https://livrevisage-c44bb-default-rtdb.europe-west1.firebasedatabase.app/feed.json";
 
-            try {
-                const firebaseResponse = await axios.get(url);
+            const firebaseResponse = await axios.get(url);
 
-                context.commit('UPDATE_FEED', firebaseResponse.data);
-
-                if(firebaseResponse.statusText !== 'OK') {
-                    throw new Error("Une erreur est survenue !");
-                }
-            } catch(error) {
-                alert(error.message);
-            }
+            context.commit('UPDATE_FEED', firebaseResponse.data);
         },
         async triggerDelete(store, id) {
           const url = `https://livrevisage-c44bb-default-rtdb.europe-west1.firebasedatabase.app/feed`;
