@@ -3,12 +3,14 @@
     <div class="card-body">
       <p class="card-text">{{ content }}.</p>
       <p>Posté par <router-link :to="{ name: 'user-posts', params:{ id: author_id }}">{{author_name}}</router-link></p>
-      <button @click="triggerDelete">Delete</button>
+      <button @click="deleteItem(id)">Delete</button>
     </div>
   </div>
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
   name: 'Post',
   props:{
@@ -17,12 +19,9 @@ export default {
     author_id:String,
     id:String
   },
-  emits: ['deleteItem'],
-  methods: {
-    triggerDelete() {
-      this.$emit('deleteItem', this.id);
-    },
-  },
+  methods:{
+    ...mapActions('feed', ['deleteItem'])
+  }
 }
 </script>
 
