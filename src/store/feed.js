@@ -34,6 +34,7 @@ const feed = {
 
             context.commit('UPDATE_FEED', firebaseResponse.data);
         },
+
         async deleteItem(store, id) {
             const url = `https://livrevisage-c44bb-default-rtdb.europe-west1.firebasedatabase.app/feed`;
             try {
