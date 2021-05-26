@@ -57,6 +57,7 @@ const feed = {
                 if(response.statusText === 'OK') {
                     context.commit('UPDATE_FIELD_VALUE', '');
                     router.push('/');
+                    context.dispatch('getAllPosts');
                 }
             } catch (e) {
                 console.log(e);
