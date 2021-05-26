@@ -11,7 +11,11 @@
             <router-link to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/about">About</router-link>
+            <router-link to="/users">Changer d'utilisateur</router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/users/add">Ajouter un utilisateur</router-link>
           </li>
         </ul>
       </div>
