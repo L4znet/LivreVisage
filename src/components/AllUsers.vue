@@ -3,7 +3,7 @@
     <h1>Changer d'utilisateur</h1>
     <UserItem v-for="(user, index) in getUsers" :key="index"
           :id="index"
-          :content="user.username"></UserItem>
+          :username="user.username"></UserItem>
   </main>
 </template>
 

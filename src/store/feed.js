@@ -7,13 +7,17 @@ const feed = {
     state(){
         return {
             feed: {},
-            field_vue:''
+            field_vue:'',
+            userConnected:{}
         }
     },
 
     getters:{
         getFeedPost(state){
             return state.feed
+        },
+        getUserConnected(state){
+            return state.userConnected
         }
     },
 
@@ -21,8 +25,8 @@ const feed = {
         UPDATE_FEED(state, payload){
             state.feed = payload
         },
-        UPDATE_FIELD_VALUE(state, payload){
-            state.field_vue = payload
+        UPDATE_USER_CONNECT(state, payload){
+            state.userConnected = payload
         }
     },
 
@@ -55,13 +59,18 @@ const feed = {
             try{
                 const response = await axios.post(url, item);
                 if(response.statusText === 'OK') {
-                    context.commit('UPDATE_FIELD_VALUE', '');
                     router.push('/');
                     context.dispatch('getAllPosts');
                 }
             } catch (e) {
                 console.log(e);
             }
+        },
+
+        showConnect(context){
+            const userConnected = localStorage.getItem('userConnected')
+            context.commit('UPDATE_USER_CONNECT', userConnected);
+
         }
     },
 
