@@ -30,6 +30,19 @@ const feed = {
 
             context.commit('UPDATE_FEED', firebaseResponse.data);
         },
+        async triggerDelete(store, id) {
+          const url = `https://livrevisage-c44bb-default-rtdb.europe-west1.firebasedatabase.app/feed`;
+          try {
+            const response = await axios.delete(`${url}/${id}.json`);
+    
+            if(response.statusText !== 'OK') {
+              throw new Error("Une erreur est survenue !");
+            }
+            store.dispatch('getAllPosts');
+          } catch(error) {
+            alert(error.message);
+          }
+        }
     },
 
 }

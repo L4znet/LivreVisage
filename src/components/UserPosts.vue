@@ -1,6 +1,12 @@
 <template>
   <main class="container">
-    <FilteredPost v-for="(post, index) in getFeedPost" :key="index" :content="post.content" :author_name="post.author_name" :author_id="post.author_id" :selected_id="id"></FilteredPost>
+    <FilteredPost v-for="(post, index) in getFeedPost" :key="index"
+    :id="index"
+    :content="post.content" 
+    :author_name="post.author_name" 
+    :author_id="post.author_id" 
+    :selected_id="id"
+    @delete-item="triggerDelete"></FilteredPost>
   </main>
 </template>
 
@@ -23,7 +29,7 @@ export default {
     this.getUserPosts(this.id);
   },
   computed:{
-    ...mapGetters('feed', ['getFeedPost']),
+    ...mapGetters('feed', ['getFeedPost', 'triggerDelete']),
   },
 
   methods:{

@@ -4,7 +4,12 @@
     <div class="mb-3">
       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Exprimez-vous"></textarea>
     </div>
-    <Post v-for="(post, index) in getFeedPost" :key="index" :content="post.content" :author_name="post.author_name" :author_id="post.author_id"></Post>
+    <Post v-for="(post, index) in getFeedPost" :key="index" 
+    :id="index"
+    :content="post.content" 
+    :author_name="post.author_name" 
+    :author_id="post.author_id" 
+    @delete-item="triggerDelete"></Post>
   </main>
 </template>
 
@@ -27,7 +32,7 @@ export default {
   },
 
   methods:{
-    ...mapActions('feed', ['getAllPosts']),
+    ...mapActions('feed', ['getAllPosts', 'triggerDelete']),
   }
 }
 </script>
