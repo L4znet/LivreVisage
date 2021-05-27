@@ -7,11 +7,11 @@ const users = {
         return {
             users: [
                 {
-                    id:'1',
+                    id:"1",
                     username:'Laznet'
                 },
                 {
-                    id:'2',
+                    id:"2",
                     username:'Charly'
                 }
             ],
