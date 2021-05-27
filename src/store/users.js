@@ -1,12 +1,20 @@
-import axios from "axios";
-import router from "../router";
+
 
 const users = {
     namespaced: true,
 
     state(){
         return {
-            users: {},
+            users: [
+                {
+                    id:'1',
+                    username:'Laznet'
+                },
+                {
+                    id:'2',
+                    username:'Charly'
+                }
+            ],
             userConnected:{}
         }
     },
@@ -27,30 +35,10 @@ const users = {
     },
 
     actions:{
-        async getAllUsers(context){
-            const url = "https://livrevisage-c44bb-default-rtdb.europe-west1.firebasedatabase.app/users.json";
-
-            const firebaseResponse = await axios.get(url);
-
-            context.commit('UPDATE_USERS_LIST', firebaseResponse.data);
-        },
-
-        async addUser(context, payload){
-            const url = 'https://livrevisage-c44bb-default-rtdb.europe-west1.firebasedatabase.app/users.json';
-            const item = { username: payload.username };
-            try{
-                const response = await axios.post(url, item);
-                if(response.statusText === 'OK') {
-                    router.push('/users');
-                   context.dispatch('getAllUsers');
-                }
-            } catch (e) {
-                console.log(e);
-            }
-        },
         connectUser(context, payload){
             const userConnected = { username:payload.username,id:payload.id };
-            localStorage.setItem('userConnected', userConnected);
+
+            localStorage.setItem('userConnected', JSON.stringify(userConnected));
 
             context.commit('UPDATE_CONNECTED_USER', userConnected);
         },

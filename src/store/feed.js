@@ -7,7 +7,6 @@ const feed = {
     state(){
         return {
             feed: {},
-            field_vue:'',
             userConnected:{}
         }
     },
@@ -16,7 +15,7 @@ const feed = {
         getFeedPost(state){
             return state.feed
         },
-        getUserConnected(state){
+        getUserConnect(state){
             return state.userConnected
         }
     },
@@ -67,9 +66,10 @@ const feed = {
             }
         },
 
-        showConnect(context){
+        loadConnected(context){
             const userConnected = localStorage.getItem('userConnected')
-            context.commit('UPDATE_USER_CONNECT', userConnected);
+
+            context.commit('UPDATE_USER_CONNECT', JSON.parse(userConnected));
 
         }
     },
