@@ -7,7 +7,8 @@ const feed = {
     state(){
         return {
             feed: {},
-            userConnected:{},
+            userConnected:{
+            },
             content:''
         }
     },
@@ -16,8 +17,17 @@ const feed = {
         getFeedPost(state){
             return state.feed
         },
-        getUserConnect(state){
-            return state.userConnected
+        getUsername(state){
+            if(!state.userConnected.length){
+                return "";
+            }
+            return state.userConnected.username
+        },
+        getId(state){
+            if(!state.userConnected.length){
+                return "";
+            }
+            return state.userConnected.id
         }
     },
 
@@ -54,27 +64,6 @@ const feed = {
             } catch(error) {
                 alert(error.message);
             }
-        },
-
-        async updateItem(store, post) {
-          const url = `https://livrevisage-c44bb-default-rtdb.europe-west1.firebasedatabase.app/feed`;
-          try {
-
-            const newContent = {
-              author_id: post[1],
-              author_name: post[2],
-              content: post[3]
-            };
-            
-            const response = await axios.put(`${url}/${post[0]}.json`, newContent);
-
-            if(response.statusText !== 'OK') {
-                throw new Error("Une erreur est survenue !");
-            }
-            store.dispatch('getAllPosts');
-          } catch(error) {
-              alert(error.message);
-          }
         },
 
         async addPost(context, payload){
