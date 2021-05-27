@@ -1,9 +1,9 @@
 <template>
   <main class="container">
     <h1>Votre feed</h1>
-    <h2>Vous êtes connecté en tant que {{username}}</h2>
+    <h2>Vous êtes connecté en tant que <b>{{getUserConnect.username}}</b></h2>
     <div class="mb-3">
-      <textarea class="form-control" v-model="content" rows="3" placeholder="Exprimez-vous" @keyup.prevent.enter="addPost({content:content, author_name:author_name, author_id:author_id })"></textarea>
+      <textarea class="form-control" v-model="content" rows="3" placeholder="Exprimez-vous" @keyup.prevent.enter="addPost({content:content, author_name:getUserConnect.username, author_id:getUserConnect.id })"></textarea>
     </div>
     <Post v-for="(post, index) in getFeedPost" :key="index" 
     :id="index"
@@ -26,9 +26,7 @@ export default {
 
   data(){
     return{
-      content:'',
-      author_name:'Charly Escalona',
-      author_id:'1111'
+      content:''
     }
   },
 
@@ -39,13 +37,14 @@ export default {
 
   mounted() {
     this.getAllPosts()
+    this.loadConnected()
   },
   computed:{
-    ...mapGetters('feed', ['getFeedPost']),
+    ...mapGetters('feed', ['getFeedPost', 'getUserConnect']),
   },
 
   methods:{
-    ...mapActions('feed', ['getAllPosts', 'addPost', 'showConnect']),
+    ...mapActions('feed', ['getAllPosts', 'addPost', 'loadConnected']),
   }
 }
 </script>
