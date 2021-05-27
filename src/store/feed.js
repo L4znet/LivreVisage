@@ -56,27 +56,6 @@ const feed = {
             }
         },
 
-        async updateItem(store, post) {
-          const url = `https://livrevisage-c44bb-default-rtdb.europe-west1.firebasedatabase.app/feed`;
-          try {
-
-            const newContent = {
-              author_id: post[1],
-              author_name: post[2],
-              content: post[3]
-            };
-            
-            const response = await axios.put(`${url}/${post[0]}.json`, newContent);
-
-            if(response.statusText !== 'OK') {
-                throw new Error("Une erreur est survenue !");
-            }
-            store.dispatch('getAllPosts');
-          } catch(error) {
-              alert(error.message);
-          }
-        },
-
         async addPost(context, payload){
             const url = 'https://livrevisage-c44bb-default-rtdb.europe-west1.firebasedatabase.app/feed.json';
             const item = { content: payload.content, author_id: payload.author_id, author_name: payload.author_name };
