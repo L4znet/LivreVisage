@@ -7,8 +7,7 @@ const feed = {
     state(){
         return {
             feed: {},
-            userConnected:{
-            },
+            userConnected:null,
             content:''
         }
     },
@@ -18,13 +17,13 @@ const feed = {
             return state.feed
         },
         getUsername(state){
-            if(!state.userConnected.length){
+            if(!state.userConnected){
                 return "";
             }
             return state.userConnected.username
         },
         getId(state){
-            if(!state.userConnected.length){
+            if(!state.userConnected){
                 return "";
             }
             return state.userConnected.id

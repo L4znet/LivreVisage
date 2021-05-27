@@ -55,7 +55,12 @@ export default {
   this.updateContentValue();
  },
  computed: {
-  ...mapGetters("feed", ["getFeedPost", "getUserConnect"]),
+  ...mapGetters("feed", [
+   "getFeedPost",
+   "getUserConnect",
+   "getUsername",
+   "getId",
+  ]),
   ...mapState("feed", ["content"]),
  },
 
