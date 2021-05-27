@@ -30,7 +30,7 @@ export default {
   methods:{
     editItem() {
       if(this.updateMode === true){
-        this.updateItem([this.id, this.author_id, this.author_name, this.test]);
+        this.updateItem([this.id, this.author_id, this.author_name, this.contentToChange]);
       }
       this.updateMode = !this.updateMode;
     }, 
