@@ -7,7 +7,8 @@ const feed = {
     state(){
         return {
             feed: {},
-            userConnected:{}
+            userConnected:{},
+            content:''
         }
     },
 
@@ -26,6 +27,9 @@ const feed = {
         },
         UPDATE_USER_CONNECT(state, payload){
             state.userConnected = payload
+        },
+        UPDATE_CONTENT_VALUE(state, payload){
+            state.content = payload
         }
     },
 
@@ -60,6 +64,7 @@ const feed = {
                 if(response.statusText === 'OK') {
                     router.push('/');
                     context.dispatch('getAllPosts');
+                    context.commit('UPDATE_CONTENT_VALUE', '');
                 }
             } catch (e) {
                 console.log(e);
@@ -71,6 +76,10 @@ const feed = {
 
             context.commit('UPDATE_USER_CONNECT', JSON.parse(userConnected));
 
+        },
+
+        updateContentValue(context, payload){
+           context.commit('UPDATE_CONTENT_VALUE', payload);
         }
     },
 
