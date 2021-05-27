@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
  name: "Post",
@@ -37,7 +37,27 @@ export default {
    }
    this.updateMode = !this.updateMode;
   },
-  ...mapActions("feed", ["deleteItem", "updateItem", "loadConnected"]),
- },
-};
+  data() {
+    return {
+      updateMode: false,
+      contentToChange: this.content,
+
+    }
+  },
+  mounted() {
+    this.loadConnected()
+  },
+  computed:{
+    ...mapGetters('feed', ['getId']),
+  },
+  methods:{
+    editItem() {
+      if(this.updateMode === true){
+        this.updateItem([this.id, this.author_id, this.author_name, this.contentToChange]);
+      }
+      this.updateMode = !this.updateMode;
+    },
+    ...mapActions('feed', ['deleteItem', 'updateItem'])
+  }
+}
 </script>

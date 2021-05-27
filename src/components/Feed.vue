@@ -14,18 +14,14 @@
      addPost({
       content: content,
       author_name: getUserConnect.username,
-      author_id: getUserConnect.id,
+      author_id: getId,
      })
     "
     @keyup="updateContentValue($event.target.value)"
    ></textarea>
    <button
     @click="
-     addPost({
-      content: content,
-      author_name: getUserConnect.username,
-      author_id: getUserConnect.id,
-     })
+     addPost({ content: content, author_name: getUsername, author_id: getId })
     "
    >
     Poster
