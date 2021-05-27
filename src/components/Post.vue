@@ -4,14 +4,16 @@
       <p class="card-text" v-if="!updateMode">{{ content }}.</p>
       <textarea cols="100" rows="3" v-else v-model="contentToChange"></textarea>
       <p>Posté par <router-link :to="{ name: 'user-posts', params:{ id: author_id }}">{{author_name}}</router-link></p>
-      <button @click="deleteItem(id)">Delete</button>
-      <button @click="editItem">Modifier</button>
+      <div v-if="author_id === getUserConnect.id">
+        <button @click="deleteItem(id)">Delete</button>
+        <button @click="editItem">Modifier</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: 'Post',
@@ -35,7 +37,10 @@ export default {
       this.updateMode = !this.updateMode;
     }, 
     ...mapActions('feed', ['deleteItem', 'updateItem'])
-  }
+  },
+  computed:{
+    ...mapGetters('feed', ['getUserConnect']),
+  },
 }
 </script>
 
