@@ -7,7 +7,7 @@ const feed = {
     state(){
         return {
             feed: {},
-            userConnected:{},
+            userConnected:null,
             content:''
         }
     },
@@ -16,8 +16,17 @@ const feed = {
         getFeedPost(state){
             return state.feed
         },
-        getUserConnect(state){
-            return state.userConnected
+        getUsername(state){
+            if(!state.userConnected){
+                return "";
+            }
+            return state.userConnected.username
+        },
+        getId(state){
+            if(!state.userConnected){
+                return "";
+            }
+            return state.userConnected.id
         }
     },
 
@@ -75,7 +84,6 @@ const feed = {
             const userConnected = localStorage.getItem('userConnected')
 
             context.commit('UPDATE_USER_CONNECT', JSON.parse(userConnected));
-
         },
 
         updateContentValue(context, payload){

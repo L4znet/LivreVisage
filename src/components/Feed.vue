@@ -1,10 +1,10 @@
 <template>
   <main class="container">
     <h1>Votre feed</h1>
-    <h2>Vous êtes connecté en tant que <b>{{getUserConnect.username}}</b></h2>
+    <h2>Vous êtes connecté en tant que <b>{{getUsername}}</b></h2>
     <div class="mb-3">
       <textarea class="form-control" :value="content" rows="3" placeholder="Exprimez-vous" @keyup.prevent.enter="addPost({content:content, author_name:getUserConnect.username, author_id:getUserConnect.id })" @keyup="updateContentValue($event.target.value)"></textarea>
-      <button @click="addPost({content:content, author_name:getUserConnect.username, author_id:getUserConnect.id })">Poster</button>
+      <button @click="addPost({content:content, author_name:getUsername, author_id:getId })">Poster</button>
     </div>
     <Post v-for="(post, index) in getFeedPost" :key="index" 
     :id="index"
@@ -31,7 +31,7 @@ export default {
     this.updateContentValue()
   },
   computed:{
-    ...mapGetters('feed', ['getFeedPost', 'getUserConnect']),
+    ...mapGetters('feed', ['getFeedPost', 'getUsername', 'getId']),
     ...mapState('feed', ['content']),
   },
 
