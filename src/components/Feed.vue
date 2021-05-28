@@ -2,7 +2,7 @@
  <main class="container">
   <h1>Votre feed</h1>
   <h2>
-   Vous êtes connecté en tant que <b>{{ getUserConnect.username }}</b>
+   Vous êtes connecté en tant que <b>{{ getUsername }}</b>
   </h2>
   <div class="mb-3">
    <textarea
@@ -10,13 +10,6 @@
     :value="content"
     rows="3"
     placeholder="Exprimez-vous"
-    @keyup.prevent.enter="
-     addPost({
-      content: content,
-      author_name: getUserConnect.username,
-      author_id: getId,
-     })
-    "
     @keyup="updateContentValue($event.target.value)"
    ></textarea>
    <button
