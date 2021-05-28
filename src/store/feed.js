@@ -7,7 +7,7 @@ const feed = {
     state(){
         return {
             feed: {},
-            userConnected:null,
+            userConnected:{},
             content:''
         }
     },
@@ -17,10 +17,12 @@ const feed = {
             return state.feed
         }
     },
-
     mutations:{
         UPDATE_FEED(state, payload){
             state.feed = payload
+        },
+        UPDATE_CONTENT_VALUE(state, payload){
+            state.content = payload
         }
     },
 
@@ -62,22 +64,26 @@ const feed = {
             }
         },
 
- 
-
-        async editItem(context, payload) {
+        async editItem(state, payload) {
 
             const url = `https://livrevisage-c44bb-default-rtdb.europe-west1.firebasedatabase.app/feed`;
             try {
-                const response = await axios.put(`${url}/${payload.author_id}.json`, payload);
+                const response = await axios.put(`${url}/${payload.id}.json`, payload);
                 if(response.statusText !== 'OK') {
                     throw new Error("Une erreur est survenue !");
                 }
-                context.dispatch('getAllPosts');
+                state.dispatch('getAllPosts');
             } catch(error) {
                 alert(error.message);
             }
 
         },
+
+        updateContentValue(context, payload){
+            context.commit('UPDATE_CONTENT_VALUE', payload);
+        }
+
+
     },
 
 }

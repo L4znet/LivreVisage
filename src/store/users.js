@@ -7,15 +7,20 @@ const users = {
         return {
             users: [
                 {
-                    id:"1",
-                    username:'Laznet'
+                    id: "1",
+                    username: 'Laznet'
                 },
                 {
-                    id:"2",
-                    username:'Charly'
+                    id: "2",
+                    username: 'Charly'
+                },
+
+                {
+                    id: "3",
+                    username: 'Toto'
                 }
             ],
-            userConnected:null
+            userConnected: null,
         }
     },
 
@@ -23,8 +28,9 @@ const users = {
         getUsers(state){
             return state.users
         },
-        
         getUsername(state){
+            console.log(state.userConnected)
+
             if(!state.userConnected){
                 return "";
             }
@@ -45,7 +51,9 @@ const users = {
         UPDATE_CONNECTED_USER(state, payload){
             state.userConnected = payload
         },
-        
+        UPDATE_USER_CONNECT(state, payload){
+            state.userConnected = payload
+        },
     },
 
     actions:{
@@ -65,11 +73,11 @@ const users = {
         loadConnected(context){
             const userConnected = localStorage.getItem('userConnected')
 
-            context.commit('UPDATE_CONNECTED_USER', JSON.parse(userConnected));
+            context.commit('UPDATE_USER_CONNECT', JSON.parse(userConnected));
 
         },
     },
 
-}
+};
 
 export default users;
