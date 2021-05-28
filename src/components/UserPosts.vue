@@ -5,10 +5,10 @@
     :content="post.content" 
     :author_name="post.author_name" 
     :author_id="post.author_id" 
-    :selected_id="id"
-    @delete-item="triggerDelete"></FilteredPost>
+    :selected_id="id"></FilteredPost>
   </main>
 </template>
+
 
 <script>
 import {mapActions, mapGetters } from 'vuex'
@@ -26,14 +26,20 @@ export default {
   },
 
   mounted() {
-    this.getUserPosts(this.id);
+    this.getAllPosts()
   },
   computed:{
-    ...mapGetters('feed', ['getFeedPost', 'triggerDelete']),
+    ...mapGetters('feed', ['getFeedPost']),
   },
 
   methods:{
-    ...mapActions('feed', ['getUserPosts']),
+    ...mapActions('feed', ['getAllPosts']),
   }
 }
 </script>
+
+<style scoped>
+h1 {
+  margin-bottom: 30px;
+}
+</style>
