@@ -1,9 +1,6 @@
 <template>
  <main class="container">
   <h1>Votre feed</h1>
-  <h2>
-   Vous êtes connecté en tant que <b>{{ getUsername }}</b>
-  </h2>
   <div class="mb-3">
    <textarea
     class="form-control"
@@ -48,22 +45,13 @@ export default {
   this.updateContentValue();
  },
  computed: {
-  ...mapGetters("feed", [
-   "getFeedPost",
-   "getUserConnect",
-   "getUsername",
-   "getId",
-  ]),
+  ...mapGetters("feed", ["getFeedPost"]),
+  ...mapGetters("users", ["getUserConnect", "getUsername", "getId"]),
   ...mapState("feed", ["content"]),
  },
 
  methods: {
-  ...mapActions("feed", [
-   "getAllPosts",
-   "addPost",
-   "loadConnected",
-   "updateContentValue",
-  ]),
+  ...mapActions("feed", ["getAllPosts", "addPost", "updateContentValue"]),
  },
 };
 </script>
