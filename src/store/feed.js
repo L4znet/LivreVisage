@@ -15,30 +15,12 @@ const feed = {
     getters:{
         getFeedPost(state){
             return state.feed
-        },
-        getUsername(state){
-            if(!state.userConnected){
-                return "";
-            }
-            return state.userConnected.username
-        },
-        getId(state){
-            if(!state.userConnected){
-                return "";
-            }
-            return state.userConnected.id
         }
     },
 
     mutations:{
         UPDATE_FEED(state, payload){
             state.feed = payload
-        },
-        UPDATE_USER_CONNECT(state, payload){
-            state.userConnected = payload
-        },
-        UPDATE_CONTENT_VALUE(state, payload){
-            state.content = payload
         }
     },
 
@@ -80,12 +62,7 @@ const feed = {
             }
         },
 
-        loadConnected(context){
-            const userConnected = localStorage.getItem('userConnected')
-
-            context.commit('UPDATE_USER_CONNECT', JSON.parse(userConnected));
-
-        },
+ 
 
         async editItem(context, payload) {
 

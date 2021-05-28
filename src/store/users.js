@@ -15,13 +15,26 @@ const users = {
                     username:'Charly'
                 }
             ],
-            userConnected:{}
+            userConnected:null
         }
     },
 
     getters:{
         getUsers(state){
             return state.users
+        },
+        
+        getUsername(state){
+            if(!state.userConnected){
+                return "";
+            }
+            return state.userConnected.username
+        },
+        getId(state){
+            if(!state.userConnected){
+                return "";
+            }
+            return state.userConnected.id
         }
     },
 
@@ -31,7 +44,8 @@ const users = {
         },
         UPDATE_CONNECTED_USER(state, payload){
             state.userConnected = payload
-        }
+        },
+        
     },
 
     actions:{
@@ -46,7 +60,14 @@ const users = {
         disconnectUser(context){
             localStorage.removeItem('userConnected');
             context.commit('UPDATE_CONNECTED_USER', '');
-        }
+        },
+
+        loadConnected(context){
+            const userConnected = localStorage.getItem('userConnected')
+
+            context.commit('UPDATE_CONNECTED_USER', JSON.parse(userConnected));
+
+        },
     },
 
 }
