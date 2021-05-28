@@ -87,9 +87,20 @@ const feed = {
 
         },
 
-        updateContentValue(context, payload){
-           context.commit('UPDATE_CONTENT_VALUE', payload);
-        }
+        async editItem(context, payload) {
+
+            const url = `https://livrevisage-c44bb-default-rtdb.europe-west1.firebasedatabase.app/feed`;
+            try {
+                const response = await axios.put(`${url}/${payload.author_id}.json`, payload);
+                if(response.statusText !== 'OK') {
+                    throw new Error("Une erreur est survenue !");
+                }
+                context.dispatch('getAllPosts');
+            } catch(error) {
+                alert(error.message);
+            }
+
+        },
     },
 
 }
