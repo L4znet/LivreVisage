@@ -15,9 +15,9 @@ https://www.figma.com/file/fkoNo8VvrhaOA1ccaQJ2LY/Livrevisage?node-id=0%3A1
 ## Technologies utilisées :
 
 - ** VueJS**
-- VueX
-- Vue Router
-- Axios
+  - VueX
+  - Vue Router
+  - Axios
 
 **Firebase (Realtime Database)**
 
