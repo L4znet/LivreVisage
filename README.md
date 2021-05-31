@@ -19,7 +19,7 @@ https://www.figma.com/file/fkoNo8VvrhaOA1ccaQJ2LY/Livrevisage?node-id=0%3A1
   - Vue Router
   - Axios
 
-**Firebase (Realtime Database)**
+* irebase (Realtime Database)
 
 ## Mettre en place ce projet
 ```
