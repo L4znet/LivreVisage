@@ -1,24 +1,28 @@
 # livre-visage
 
-## Project setup
+
+Ce projet a été réalisé dans le cadre de mon cours de Javascript, pour valider nos acquis.
+
+Il s'agit d'un mini réseau social relié à une base de donnée **Firebase**.
+
+J'ai été accompagné de (https://github.com/Maxouleloup)[Maxence Bannier] et d'(https://github.com/ArthurLeveque)[Arthur Leveque] dans la réalisation de ce projet.
+
+## Mettre en place ce projet
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiler et utiliser le hot reload
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compiler et minifier pour la production
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### Lancer le linter
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
